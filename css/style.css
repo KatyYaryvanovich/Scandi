@@ -83,6 +83,8 @@ p {
 
 .main-nav__item {
    margin-right: 27px;
+   position: relative;
+   padding: 5px 0;
 }
 
 .main-nav__link {
@@ -92,12 +94,36 @@ p {
    text-decoration: none;
 }
 
-.main-nav__item:hover {
-   border-bottom: 2px solid #cc8b86;
+
+.main-nav__item::before,
+.main-nav__item::after {
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 2px;
+   background-color: #cc8b86;
+   content: "";
+   opacity: 0;
+   transition: opacity 0.3s, transform 0.3s;
+}
+
+.main-nav__item::before {
+   top: 0;
+   transform: translateY(-10px);
+}
+
+.main-nav__item::after {
+   bottom: 0;
+  transform: translateY(10px);
+}
+
+.main-nav__item:hover::before,
+.main-nav__item:hover::after {
+   opacity: 1;
+   transform: translateY(0px);
 }
 
 .main-nav__item:active {
-   border-bottom: 2px solid #cc8b86;
    color: #cc8b86;
 }
 
@@ -151,25 +177,28 @@ p {
    font-weight: 500;
    font-size: 20px;
    line-height: 25px;
-   color: inherit;
+   color: rgba(83, 55, 56, 0.9);
    text-decoration: none;
    text-align: center;
    padding: 25px 0;
    background-color: #cc8b86;
-
+   position: relative;
 }
 
-.button-order:hover {
-   background-color: rgba(204, 139, 134, 0.7);
+.button-order::before {
+content: attr(data-hover);
+  position: absolute;
+  color: rgb(83, 55, 56);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.button-order:hover::before {
+   opacity: 0;
+   transform: scale(1.5);
 }
 
 .button-order:active {
-   box-shadow: 6px 6px 12px 6px;
-}
-
-.button-order:focus {
-   outline: none;
-   box-shadow: 6px 6px 12px 6px;
+   background-color: rgba(204, 139, 134, 0.7);
 }
 
 .section-title {
@@ -317,6 +346,8 @@ p {
    line-height: 37px;
    color: inherit;
    text-decoration: none;
+   position: relative;
+   padding: 5px 0;
 }
 
 .link-more path {
@@ -327,18 +358,26 @@ p {
    text-align: center;
 }
 
-.link-more:hover {
-   border-bottom: 2px solid #cc8b86;
+.link-more::after {
+   position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgba(204, 139, 134, 0.5);
+  content: "";
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.link-more:hover::after {
+   opacity: 1;
+  transform: translateY(0px);
 }
 
 .link-more:active {
-   border-bottom: 2px solid #cc8b86;
    color: #cc8b86;
-}
-
-.link-more:focus {
-   outline: none;
-   border-bottom: 2px solid #cc8b86;
 }
 
 .team {
@@ -586,6 +625,10 @@ p {
    border: none;
 }
 
+.order-form__order-link:focus {
+   outline: none;
+   box-shadow: 6px 6px 12px 6px;
+}
 
 .map {
    position: relative;
