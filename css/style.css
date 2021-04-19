@@ -94,7 +94,6 @@ p {
    text-decoration: none;
 }
 
-
 .main-nav__item::before,
 .main-nav__item::after {
    position: absolute;
@@ -114,7 +113,7 @@ p {
 
 .main-nav__item::after {
    bottom: 0;
-  transform: translateY(10px);
+   transform: translateY(10px);
 }
 
 .main-nav__item:hover::before,
@@ -186,10 +185,10 @@ p {
 }
 
 .button-order::before {
-content: attr(data-hover);
-  position: absolute;
-  color: rgb(83, 55, 56);
-  transition: transform 0.3s, opacity 0.3s;
+   content: attr(data-hover);
+   position: absolute;
+   color: rgb(83, 55, 56);
+   transition: transform 0.3s, opacity 0.3s;
 }
 
 .button-order:hover::before {
@@ -360,20 +359,20 @@ content: attr(data-hover);
 
 .link-more::after {
    position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: rgba(204, 139, 134, 0.5);
-  content: "";
-  transition: opacity 0.3s, transform 0.3s;
-  opacity: 0;
-  transform: translateY(10px);
+   top: 100%;
+   left: 0;
+   width: 100%;
+   height: 4px;
+   background-color: rgba(204, 139, 134, 0.5);
+   content: "";
+   transition: opacity 0.3s, transform 0.3s;
+   opacity: 0;
+   transform: translateY(10px);
 }
 
 .link-more:hover::after {
    opacity: 1;
-  transform: translateY(0px);
+   transform: translateY(0px);
 }
 
 .link-more:active {
@@ -604,16 +603,71 @@ content: attr(data-hover);
    background-color: transparent;
    padding-top: 35px;
    padding-bottom: 8px;
+   box-sizing: border-box;
 }
 
-.order-form__field::placeholder {
-   color: #f6ede9;
+.label-box {
+   position: relative;
+   width: 100%;
+}
+
+.order-form__label {
+   position: absolute;
+   color: #fff;
+   font-size: 18px;
+   font-style: normal;
+   pointer-events: none;
+   transition-duration: 0.2s;
+}
+
+.label-name {
+   top: -36px;
+}
+
+.label-phone {
+   top: -36px;
+}
+
+.field-name:focus ~ .label-box-name .label-name,
+.field-name:valid ~ .label-box-name .label-name,
+.field-phone:focus ~ .label-box-phone .label-phone,
+.field-phone:valid ~ .label-box-phone .label-phone {
+   font-size: 14px;
+   transform: translateY(-30px);
+}
+
+.label-box::before,
+.label-box::after {
+   position: absolute;
+   bottom: -1px;
+   width: 0;
+   height: 3px;
+   background-color: #fff;
+   content: "";
+   transition-duration: 0.2s;
+   transition-property: width;
+}
+
+.label-box::before {
+   left: 50%;
+}
+
+.label-box::after {
+   right: 50%;
+}
+
+.field-name:focus ~ .label-box-name::before,
+.field-name:focus ~ .label-box-name::after {
+   width: 50%;
+}
+
+.field-phone:focus ~ .label-box-phone::before,
+.field-phone:focus ~ .label-box-phone::after {
+   width: 50%;
 }
 
 .order-form__field:focus {
    outline: none;
-   box-shadow: 1px 1px 4px 2px #5e4a48;
-
 }
 
 .order-form__field:active {
@@ -652,7 +706,6 @@ content: attr(data-hover);
    z-index: 2;
 }
 
-
 .main-footer__wraper {
    display: flex;
    flex-wrap: wrap;
@@ -661,8 +714,8 @@ content: attr(data-hover);
 
 .main-footer__phone {
    font-size: 18px;
-    line-height: 30px;
-    margin-right: 42px;
+   line-height: 30px;
+   margin-right: 42px;
 }
 
 .main-footer__owner {
